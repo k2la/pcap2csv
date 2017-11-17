@@ -17,12 +17,12 @@ def parse(filename):
     for _, packet in enumerate(packets):
         values = {}
         if 'TCP' in packet:
-            if 'Ethernet' in packet:
-                values.update({
-                    'ethernet_time': packet['Ethernet'].time,
-                    'ethernet_src': packet['Ethernet'].src,
-                    'ethernet_dst': packet['Ethernet'].dst,
-                })
+            # if 'Ethernet' in packet:
+            #     values.update({
+            #         'ethernet_time': packet['Ethernet'].time,
+            #         'ethernet_src': packet['Ethernet'].src,
+            #         'ethernet_dst': packet['Ethernet'].dst,
+            #     })
             if 'IP' in packet:
                 values.update({
                     'ip_time': packet['IP'].time,
@@ -47,5 +47,5 @@ def parse(filename):
             data.append(values)
     return data
 
-data_path = os.path.join('.', 'data', 'http.pcap')
+data_path = os.path.join('.', 'data', '10.144.0.0-2017-11-17-1300.pcap')
 pcap2csv(data_path)
